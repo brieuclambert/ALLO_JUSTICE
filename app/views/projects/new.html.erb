@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h1>Ajouter un nouveau procès! gagnez plein d'argent!</h1>
+      <%= simple_form_for @project do |f| %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.input :goal ,label: 'Quel montant souhaitez-vous?'%>
+        <%= f.button :submit, class: 'btn btn-primary'%>
+      <% end %>
+    </div>
+  </div>
+</div>
