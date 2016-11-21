@@ -1,6 +1,7 @@
 class ContributionsController < ApplicationController
   skip_before_action :authenticate_user! #a enlever quand on aura fini
   def new
+    @project = Project.find(params[:project_id])
     @contribution = Contribution.new
   end
 
@@ -18,6 +19,6 @@ end
 
 private
 def contribution_params
-  params.require(:project).permit(:amount)
+  params.require(:contribution).permit(:amount)
 end
 end
