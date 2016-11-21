@@ -8,6 +8,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @contributions = Contribution.select{ |contribution| contribution.project_id == params[:id].to_i}
   end
 
   def new
