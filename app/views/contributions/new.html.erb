@@ -1,7 +1,7 @@
 <h1>Your Contribution</h1>
 
 <%= simple_form_for [@project, @contribution] do |f| %>
-  <%= f.input[type=number] :amount %>
+  <%= f.input :amount %>
   <%= f.submit "Add your Investment", class: "btn btn-primary" %>
 <% end %>
 
