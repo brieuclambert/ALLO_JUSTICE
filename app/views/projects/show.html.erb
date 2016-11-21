@@ -4,4 +4,9 @@
   <h2> <%= @project.description %> </h2>
   <h3> <%= @project.goal %> </h3>
   <h2> Je soutiens cette cause ! </h2>
+  <ul>
+    <% @contributions.each do |contribution| %>
+    <li><%= contribution.amount %></li>
+    <% end %>
+  </ul>
 </div>
