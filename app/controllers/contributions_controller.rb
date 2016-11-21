@@ -1,4 +1,5 @@
 class ContributionsController < ApplicationController
+  skip_before_action :authenticate_user! #a enlever quand on aura fini
   def new
     @contribution = Contribution.new
   end
