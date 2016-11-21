@@ -8,7 +8,7 @@ class ContributionsController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @contribution = Contribution.new(contribution_params)
-    @contribution.project = @project
+    @contribution.project_id = params[:project_id]
     @contribution.user = current_user
     if @contribution.save
       redirect_to project_path(@project)
