@@ -7,13 +7,13 @@
       <% @projects.each do |project| %>
       <div class="col-xs-12 col-sm-4">
         <div class="card" style="background-color: #384259;">
-          <div class="card-category"> <%= project.name %> </div>
+          <div class="card-category"> <%= link_to project.name, project_path(project) %> </div>
           <div class="card-description">
             <h2> <%= project.description %> </h2>
             <h3> <%= project.goal %> </h3>
           </div>
           <img class="card-user avatar" src="">
-          <a class="card-link" href="#" ></a>
+         
         </div>
       </div>
       <% end %>
