@@ -1,0 +1,28 @@
+.banner {
+  color: white;
+  text-align: center;
+  height: 100vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+}
+.banner h1 {
+  font-size: 50px;
+  font-weight: bold;
+  color: #7AC7C4;
+}
+.banner h3 {
+  font-size: 20px;
+  font-weight: lighter;
+  color: #EDEFF0;
+  margin-bottom: 20px;
+}
+
+.btn {
+  color: #2C3E50;
+  background-color: #CCCCCC;
+  border-color: #CCCCCC
+}
