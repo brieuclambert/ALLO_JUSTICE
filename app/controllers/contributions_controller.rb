@@ -19,6 +19,6 @@ end
 
 private
 def contribution_params
-  params.require(:project).permit(:amount)
+  params.require(:contribution).permit(:amount)
 end
 end
