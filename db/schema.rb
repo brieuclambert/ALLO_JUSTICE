@@ -47,6 +47,9 @@ ActiveRecord::Schema.define(version: 20161122142547) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.string   "city"
+    t.string   "category"
+    t.date     "echeance"
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
   end
 
