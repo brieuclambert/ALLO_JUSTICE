@@ -6,6 +6,7 @@
         <%= f.input :name %>
         <%= f.input :description %>
         <%= f.input :goal ,label: 'Quel montant souhaitez-vous?'%>
+        <%= f.input :photo, as: :attachinary %>
         <%= f.button :submit, class: 'btn btn-primary'%>
       <% end %>
     </div>
