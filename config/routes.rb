@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :show, :new, :create, :edit, :update] do
     resources :contributions, only: [:new,:create]
   end
+
+  mount Attachinary::Engine => "/attachinary"
 end
