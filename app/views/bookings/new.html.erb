@@ -1,0 +1,13 @@
+  <div class="container text-center padded col-sm-4 col-offset-4">
+    <%= simple_form_for [@project, @booking] do |f| %>
+    <div class="input-group date">
+     <!-- <input name="date" type="text" class="form-control"> -->
+     <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
+     <!-- <span class="glyphicon glyphicon-th"></span> -->
+     <div class="input-group-addon"></div>
+   </div>
+   <br>
+   <%= f.submit class: "btn btn-primary" %>
+   <% end %>
+ </div>
+
