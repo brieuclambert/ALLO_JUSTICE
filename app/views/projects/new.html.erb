@@ -5,8 +5,11 @@
       <%= simple_form_for @project do |f| %>
         <%= f.input :name %>
         <%= f.input :description %>
+        <%= f.input :city %>
+        <%= f.input :category, collection: Project::CATEGORIES %>
         <%= f.input :goal ,label: 'Quel montant souhaitez-vous?'%>
         <%= f.input :photo, as: :attachinary %>
+        <%= f.input :echeance, as: :date, start_year: Date.today.year, end_year: Date.today.year + 100, :order => [:day, :month, :year]%>
         <%= f.button :submit, class: 'btn btn-primary'%>
       <% end %>
     </div>

@@ -1,7 +1,13 @@
 class Project < ApplicationRecord
+  CATEGORIES = ["Droit bancaire", "Droit du travail", "Droit fiscal", "Droit de la santé", "Droit de succession"]
   belongs_to :user
   has_attachment :photo
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true, uniqueness: true
   validates :goal, presence: true
+  validates :city, presence: true
+  validates :category, presence: true
+  validates :category, inclusion: {in: CATEGORIES,
+    message: "%{value} is not a valid category"}
+  validates :echeance, presence: true
 end

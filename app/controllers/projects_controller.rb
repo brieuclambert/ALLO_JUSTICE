@@ -8,6 +8,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @today = Time.now.strftime("%Y-%m-%d")
+    @elapsed_day = (@project.echeance - @today.to_date).to_i
     @contributions = Contribution.select{ |contribution| contribution.project_id == params[:id].to_i}
     @sum = 0
     @contributions.each do |contribution|
@@ -51,7 +53,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :goal, :description, :photo)
+    params.require(:project).permit(:name, :goal, :description, :photo, :city, :category, :echeance)
   end
 
 end
