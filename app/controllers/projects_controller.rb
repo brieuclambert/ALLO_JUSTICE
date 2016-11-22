@@ -7,7 +7,9 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
     @project = Project.find(params[:id])
+    @bookings = Booking.select{ |booking| booking.project_id == params[:id].to_i}
     @contributions = Contribution.select{ |contribution| contribution.project_id == params[:id].to_i}
     @sum = 0
     @contributions.each do |contribution|
