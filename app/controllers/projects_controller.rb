@@ -13,6 +13,11 @@ class ProjectsController < ApplicationController
     @contributions.each do |contribution|
       @sum += contribution.amount
     end
+    if @sum < @project.goal
+      @percentage = (@sum.fdiv(@project.goal) * 100).round(0)
+    else
+      @percentage = 100
+    end
     @contribution = Contribution.new
   end
 
