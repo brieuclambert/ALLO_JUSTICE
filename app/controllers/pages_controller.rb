@@ -11,15 +11,11 @@ class PagesController < ApplicationController
   end
 
   def map
-    @markers = []
-    Project.all.each do |project|
-      if project.latitude && project.longitude
-        @markers << {
-          "lat": project.latitude,
-          "lng": project.longitude,
-          "infowindow": "<h1>#{project.name}</h1>"
-        }
-      end
+    @projects = Project.where.not(latitude: nil, longitude: nil)
+    @hash = Gmaps4rails.build_markers(@projects) do |project, marker|
+      marker.lat project.latitude
+      marker.lng project.longitude
+      marker.infowindow "<h1>#{project.name}</h1>"
     end
     # raise
   end
