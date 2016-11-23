@@ -1,20 +1,47 @@
+<div class="wrapper">
   <div class="container" id="container-index">
-  <h1> Découvrez tous les procès </h1>
-  <h2> Décidez quelle cause vous souhaitez défendre </h2>
+    <h1> Découvrez tous les procès </h1>
+    <h2> Décidez quelle cause vous souhaitez défendre </h2>
     <div class="row">
       <% @projects.each do |project| %>
-      <div class="col-xs-12 col-sm-4">
+      <div class="col-xs-10 col-sm-4">
         <%= link_to  project_path(project) do %>
-        <div class="card" style="background-image: url('<%= cl_image_path(project.photo.path, crop: :fill)%>');">
-          <div class="card-category"> <%= project.category %> </div>
-          <div class="card-description">
-            <h2> <%= project.name %> </h2>
-            <%    @contributions = Contribution.select{ |contribution| contribution.project_id == project.id.to_i}
-            @sum = 0
-            @contributions.each do |contribution|
-              @sum += contribution.amount
-              end %>
-              <h3> <%= @sum %> sur <%= project.goal %> </h3>
+        <!-- insert <div class="card"> -->
+        <div class="card" style="background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.63)), url('<%= cl_image_path(project.photo.path)%>'); background-size: cover;" >
+          <!-- image de fond et titre -->
+          <div class="row">
+            <div class="col-sm-10 col-sm-offset-1 row-photo" >
+              <h3><%= project.name %></h3>
+            </div>
+          </div>
+          <!-- barre de progression -->
+          <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+              <% @contributions = Contribution.select{ |contribution| contribution.project_id == project.id.to_i}
+              @sum = 0
+              @contributions.each do |contribution|
+                @sum += contribution.amount
+                end %>
+                <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <%(@sum.fdiv(project.goal) * 100)%>%;">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- informations collecte -->
+            <div class="row">
+              <!-- backers -->
+              <div class="col-sm-3  col-sm-offset-1">
+                <p>12 backers</p>
+              </div>
+              <!-- goal -->
+              <div class="col-sm-4 middle">
+                <p><%= @sum %> € / <%= project.goal %> €</p>
+              </div>
+              <!-- jours restant -->
+              <div class="col-sm-3">
+                <p>35 jours restant</p>
+              </div>
             </div>
           </div>
           <% end %>
@@ -22,3 +49,4 @@
         <% end %>
       </div>
     </div>
+  </div>
