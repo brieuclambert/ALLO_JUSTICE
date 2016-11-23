@@ -84,7 +84,6 @@
       <%= simple_form_for [@project, @booking] do |f| %>
       <div class="input-group input-daterange" style="width: 300px">
         <%= f.input :start_date, as: :fake, input_html: { class: "form-control datepicker"} %>
-        <span class="input-group-addon">to</span>
         <%= f.input :end_date, as: :fake, input_html: { class: "form-control datepicker"} %>
       </div>
       <br>
