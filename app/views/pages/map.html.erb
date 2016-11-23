@@ -26,7 +26,29 @@
     <script src="https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js"></script>
     <script src="https://cdn.rawgit.com/apneadiving/Google-Maps-for-Rails/master/js_compilation/gmaps_google.js"></script>
 
-    <script type="text/javascript">
+    <% content_for(:after_js) do %>
+    <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
+
+
+
+
+
+<!--     <script type="text/javascript">
       $(document).on('ready', function() {
         var handler = Gmaps.build('Google', { markers: { clusterer: undefined }});
         handler.buildMap({ internal: { id: 'map' } }, function(){
@@ -41,6 +63,6 @@
           handler.fitMapToBounds();
         });
       })
-    </script>
+    </script> -->
   </body>
 </html>
