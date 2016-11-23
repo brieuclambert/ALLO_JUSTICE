@@ -1,12 +1,18 @@
 <div class="container">
+
   <h1> Découvrez <%= @project.name %> </h1>
+
   <div class="row" style="margin: 10px">
+
     <div class="col-xs-12 col-sm-9">
+
       <div class="row">
-        <div class="col-xs-2" style="background-image: url('<% if @project.photo? %><%= cl_image_path(@project.photo.path, width: 100, height: 150, crop: :fill)%> <% end %>')">
+
+        <div class="col-xs-4" style="background-image: url('<% if @project.photo? %><%= cl_image_path(@project.photo.path, width: 100, height: 150, crop: :fill)%> <% end %>')">
           <br/><br/><br/><br/><br/><br/>
         </div>
-        <div class="col-xs-10">
+
+        <div class="col-xs-8">
           <h2><%= @sum %> € sur <%= @project.goal %>€</h2>
           <div class="progress">
             <div class="progress">
@@ -17,19 +23,24 @@
           </div>
           <p> <%= @elapsed_day %> jours restants </p>
         </div>
+
       </div>
+
       <div class="row">
         <div class="col-xs-12">
           <p><%= @project.user.first_name %> <%= @project.user.last_name %></p>
         </div>
       </div>
+
     </div>
 
     <div class="col-xs-12 col-sm-3">
+
       <%= simple_form_for [@project, @contribution] do |f| %>
       <%= f.input :amount %>
       <%= f.submit "Participez", class: "btn btn-primary" %>
       <% end %>
+
     </div>
 
   </div>
@@ -57,16 +68,18 @@
     <div class="container">
       <%= simple_form_for [@project, @booking] do |f| %>
       <div class="input-group input-daterange" style="width: 300px">
-        <%= f.input :date, as: :string, input_html: { class: "form-control datepicker"} %>
+        <%= f.input :start_date, as: :fake, input_html: { class: "form-control datepicker"} %>
         <span class="input-group-addon">to</span>
-        <%= f.input :date, as: :string, input_html: { class: "form-control datepicker"} %>
+        <%= f.input :end_date, as: :fake, input_html: { class: "form-control datepicker"} %>
       </div>
       <br>
       <%= f.submit class: "btn btn-primary" %>
       <% end %>
     </div>
 
-</div>
+
+
+
 <%= @project.address %>
 <%= @project.latitude %>
 <%= @project.longitude %>
@@ -103,4 +116,4 @@
 </script>
 <% end %>
 
-
+</div>

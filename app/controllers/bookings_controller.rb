@@ -8,9 +8,7 @@ end
 def create
   @project = Project.find(params[:project_id])
   @booking = Booking.new(booking_params)
-
-  @booking.date = Date.strptime(booking_params[:date], '%m/%d/%Y')
-
+  @booking.date = Date.parse(params[:startdate])..Date.parse(params[:enddate])
   @booking.project_id = params[:project_id]
   @booking.user = current_user
   if @booking.save
