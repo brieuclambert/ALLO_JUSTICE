@@ -11,6 +11,7 @@ user4 = User.create(email: "felix@lechat.miaou", first_name: "Felix", last_name:
 project1 = Project.new(name: "Abus de faiblesse")
 project1.description = "L’abus de faiblesse consiste pour un professionnel à exploiter l’état d’ignorance, de vulnérabilité psychique ou psychologique du consommateur afin qu’il contracte. Les personnes concernées par l’abus de faiblesse sont celles qui ne sont pas en mesure d’apprécier les conséquences de leur engagement. Ce sont : les personnes âgées ; les personnes dont la santé est fragile ;les personnes ayant des difficultés à comprendre la langue française ; une situation d’urgence qui empêche le consommateur de réfléchir sur la portée de son acte."
 project1.goal = 10000
+project1.address = "57 rue de l'École Normale, Bordeaux"
 project1.city ="Bordeaux"
 project1.category = "Droit de succession"
 project1.echeance= Date.new(2017, 3, 20)
@@ -24,6 +25,7 @@ project1.save
 project2 = Project.new(name: "Licenciement abusif @Ratp")
 project2.description = "Le licenciement sera abusif lorsqu'une juridiction compétente (le Conseil de prud'hommes) l'aura considéré comme tel. Dans les faits, le salarié licencié pourra saisir le Conseil de prud'hommes s'il estime que certaines conditions n'ont pas été respectées (conditions de forme) ou si le licenciement n'est pas justifié par des motifs sérieux et réels (conditions de fonds)."
 project2.goal = 5000
+project2.address = "123 rue Pierre Corneille, Lyon"
 project2.city ="Lyon"
 project2.category = "Droit du travail"
 project2.echeance= Date.new(2018, 7, 18)
@@ -37,6 +39,7 @@ project2.save
 project3 = Project.new(name: "Produit médical défecteux")
 project3.description = "Le régime de la responsabilité médicale en matière de produits de santé défectueux, initialement défini pas la loi n° 98-389 du 19 mai 1998, a connu de nombreux bouleversements, notamment grâce à la jurisprudence de la Cour de justice des Communautés Européennes."
 project3.goal = 30000
+project3.address ="14 villa Gaudelet, Paris"
 project3.city ="Paris"
 project3.category = "Droit de la santé"
 project3.echeance= Date.new(2020, 2, 12)
@@ -50,6 +53,7 @@ project3.save
 project4 = Project.new(name: "Sauvons Sarko !")
 project4.description = "Un ancien chef de l’État qui insulte la justice. L’un des plus hauts magistrats de France soupçonné d'être intervenu en sa faveur dans un dossier judiciaire. L'avocat et ami de l'ex-président en mauvaise posture. C'est l'institution judiciaire tout entière qui est salie."
 project4.goal = 1000000
+project4.address = "11, rue de l'église, Paris"
 project4.city ="Paris"
 project4.category = "Droit fiscal"
 project4.echeance= Date.new(2017, 2, 28)
