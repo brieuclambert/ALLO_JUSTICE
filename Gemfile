@@ -23,6 +23,10 @@ gem "attachinary", github: "assembler/attachinary"
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
 
+source "https://rails-assets.org" do
+ gem 'rails-assets-bootstrap-datepicker'
+end
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
