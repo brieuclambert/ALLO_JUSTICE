@@ -67,6 +67,33 @@
     </div>
 
 </div>
+<%= @project.address %>
+<%= @project.latitude %>
+<%= @project.longitude %>
+
+
+
+
+<div id="map" style="height: 300px; width: 300px">
+    <% content_for(:after_js) do %>
+    <%= javascript_tag do %>
+    $(document).ready(function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers([{ lat: <%= @project.latitude %>, lng: <%= @project.longitude %> }]);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+  <% end %>
+<% end %>
+</div>
+
 
 <% content_for :after_js do %>
 <script>
