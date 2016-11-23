@@ -10,4 +10,7 @@ class Project < ApplicationRecord
   validates :category, inclusion: {in: CATEGORIES,
     message: "%{value} is not a valid category"}
   validates :echeance, presence: true
+  validates :address, presence: true
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 end
