@@ -1,25 +1,24 @@
-<div class="container">
+  <div class="container" id="container-index">
   <h1> Découvrez tous les procès </h1>
   <h2> Décidez quelle cause vous souhaitez défendre </h2>
-
-  <div class="container">
     <div class="row">
       <% @projects.each do |project| %>
       <div class="col-xs-12 col-sm-4">
-      <%= link_to  project_path(project) do %>
-        <div class="card" style="background-color: #384259; margin-top: 20px;">
-          <div class="card-category">  </div>
+        <%= link_to  project_path(project) do %>
+        <div class="card" style="background-image: url('<%= cl_image_path(project.photo.path, crop: :fill)%>');">
+          <div class="card-category"> <%= project.category %> </div>
           <div class="card-description">
-            <h2> <%= project.description %> </h2>
-            <h3> <%= project.goal %> </h3>
+            <h2> <%= project.name %> </h2>
+            <%    @contributions = Contribution.select{ |contribution| contribution.project_id == project.id.to_i}
+            @sum = 0
+            @contributions.each do |contribution|
+              @sum += contribution.amount
+              end %>
+              <h3> <%= @sum %> sur <%= project.goal %> </h3>
+            </div>
           </div>
-          <img class="card-user avatar" src="">
-
+          <% end %>
         </div>
-      <% end %>
+        <% end %>
       </div>
-      <% end %>
     </div>
-  </div>
-
-</div>
