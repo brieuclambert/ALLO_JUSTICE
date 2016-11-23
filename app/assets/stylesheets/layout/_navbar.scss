@@ -40,12 +40,14 @@
 
 /* Navbar standard link */
 .navbar-wagon-link {
-  color: #616668;
+  color: #384259;
   font-size: 14px;
+  border-bottom: solid 1px white;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  color: #7AC7C4;
   text-decoration: none;
+  border-bottom: solid 1px #7AC7C4;
 }
 
 /* Navbar right button */
@@ -60,9 +62,9 @@
   border: 2px solid #D23333;
 }
 .navbar-wagon-button:hover {
-  color: white;
-  background: #D23333;
-  border-color: #ac2626;
+  color: #384259;
+  background: #7AC7C4;
+  border-color: #7AC7C4;
 }
 
 /* Navbar search form */
