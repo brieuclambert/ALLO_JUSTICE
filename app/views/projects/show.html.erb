@@ -67,4 +67,12 @@
   </div>
 </div>
 
+<% content_for :after_js do %>
+<script>
+   $(document).ready(function() {
+   alert('<%= j @alert_message %>');
+ });
+</script>
+<% end %>
+
 
