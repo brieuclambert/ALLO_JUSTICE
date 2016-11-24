@@ -41,19 +41,22 @@
       <!-- Navbar internal -->
       <div class="col-xs-9">
         <div class="tabs">
-          <a class="tab active">
+          <a class="tab active" data-target="#general">
             <h3>Général</h3>
           </a>
-          <a class="tab">
+          <a class="tab" data-target="#carte">
             <h3>Carte</h3>
           </a>
-          <a class="tab">
+          <a class="tab" data-target="#booking">
             <h3>Rencontrez l'avocat</h3>
           </a>
         </div>
       </div>
     </div>
 
+
+
+  <div class="tab-content" id="general">
     <div class="row">
       <div class="col-xs-12 content">
       <!-- Description -->
@@ -63,79 +66,53 @@
         </div>
         <div class="col-xs-12 col-sm-4 contribution-show">
           <h3 style="width:100%">Les contributions</h3>
-          <div class="contribution-show-card">
-            <i class="fa fa-money" aria-hidden="true"></i>
-          </div>
-          <div class="contribution-show-card">
-            150 €
-          </div>
-          <div class="contribution-show-card">
-            150 €
-          </div>
-          <div class="contribution-show-card">
-            150 €
-          </div>
-
-
+          <% @contributions.each do |contribution| %>
+            <div class="contribution-show-card">
+              <h4><i class="fa fa-money" aria-hidden="true" style="margin-right:5px; color:#F73859"></i> <%= contribution.amount%> €</h4>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-
-
-
-
-<div class="row" style="margin: 10px">
-  <div class="col-sm-8">
-    <h3>Description </h3>
-    <p><%= @project.description %></p>
   </div>
 
 
-  <div class="col-sm-4">
-    <div class="row row-show-no-padding">
-      <div class="col-xs-12 col-sm-12">
-        <h3>Ils ont soutenu cette cause</h3>
-        <ul><% @contributions.each do |contribution| %>
-          <li><p> : <%= contribution.amount %> €</p></li>
-          <% end %></ul>
-        </div>
-        <div class="row row-show-no-padding">
-          <div class="col-xs-12 col-sm-12">
-            <h3> Check avaibility</h3>
+
+  <div class="tab-content hidden" id="carte">
+    <div class="row">
+      <div class="col-xs-12 content">
+        <%= @project.address %>
+    </div>
+  </div>
+  </div>
+
+  <div class="tab-content hidden" id="booking">
+    <div class="row">
+      <div class="col-xs-12 content">
+        <div class="col-xs-6">
+          <h3> Check avaibility</h3>
             <ul>
               <% @bookings.each do |booking| %>
               <li> : <%= booking.date %> </li>
               <% end %>
             </ul>
+        </div>
+        <div class="col-xs-6">
+          <%= simple_form_for [@project, @booking] do |f| %>
+          <div class="input-group input-daterange" style="width: 300px">
+            <%= f.input :start_date, as: :fake, input_html: { class: "form-control datepicker"} %>
+            <%= f.input :end_date, as: :fake, input_html: { class: "form-control datepicker"} %>
           </div>
+          <br>
+          <%= f.submit class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
 
 
-  <div class="container">
-    <%= simple_form_for [@project, @booking] do |f| %>
-    <div class="input-group input-daterange" style="width: 300px">
-      <%= f.input :start_date, as: :fake, input_html: { class: "form-control datepicker"} %>
-      <%= f.input :end_date, as: :fake, input_html: { class: "form-control datepicker"} %>
-    </div>
-    <br>
-    <%= f.submit class: "btn btn-primary" %>
-    <% end %>
-  </div>
-
-
-
-
-  <%= @project.address %>
-  <%= @project.latitude %>
-  <%= @project.longitude %>
-
-
-
-
-  <div id="map" style="height: 300px; width: 300px">
+        <div id="map" style="height: 300px; width: 300px">
     <% content_for(:after_js) do %>
     <%= javascript_tag do %>
     $(document).ready(function() {
@@ -155,6 +132,5 @@
 <% end %>
 </div>
 
+</div></div></div>
 
-</div>
-</div>
