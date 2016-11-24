@@ -34,6 +34,8 @@ end
 
 gem "geocoder"
 
+gem "letter_opener", group: :development
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
