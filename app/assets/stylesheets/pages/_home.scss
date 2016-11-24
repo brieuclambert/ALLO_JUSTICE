@@ -26,3 +26,79 @@
   background-color: #CCCCCC;
   border-color: #CCCCCC
 }
+
+
+.cardhome{
+  margin-top: 10px;
+  background-size: cover !important;
+  background-color: white ;
+  position: relative;
+
+}
+
+.cardhome-number {
+  position: relative;
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 5px;
+  // border-radius: 5px 0 0 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: blue;
+
+}
+.cardhome-number p {
+  position: absolute;
+  top: 30px;
+  left:20px;
+  font-size: 30px;
+
+}
+
+.cardhome-head {
+  // position: absolute;
+  font-size: 20px;
+  padding: 10px;
+  color: #384259;
+  font-weight: bold;
+  // border-radius: 5px;
+
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-bottom: 4px;
+  border-color: red;
+  // border-radius: 0 5px 5px 0;
+  border-radius: 5px;
+  // background-color: blue;
+  margin-right: 15px;
+  // position: absolute;
+  // position: top;
+  // text-transform: uppercase;
+
+  // left: 5px;
+  // top: 5px;
+}
+
+.cardhome-content {
+  // position: absolute;
+  background-color: #384259;
+  // position: absolute;
+  font-size: 17px;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  // margin-bottom: 15px;
+  margin: 15px;
+  // position: bottom;
+
+}
+
+
+
+
+
+
+
