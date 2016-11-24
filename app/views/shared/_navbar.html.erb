@@ -8,7 +8,7 @@
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
-
+<%= link_to "Aide", map_path, { :class=>"navbar-wagon-item navbar-wagon-link" } %>
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
@@ -44,16 +44,16 @@
         </ul>
       </div>
     </div>
-
+<button type="button" data-toggle="modal" data-target="#new_procès" class="navbar-wagon-button">
+      Ajouter un procès
+    </button>
     <% else %>
     <!-- Login text link -->
     <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
-    <%= link_to "Aide", map_path, { :class=>"navbar-wagon-item navbar-wagon-link" } %>
+
     <!-- Button (call-to-action) -->
-    <button type="button" data-toggle="modal" data-target="#new_procès" class="navbar-wagon-button">
-      Ajouter un procès
-    </button>
+
 
     <div class="modal fade" id="new_procès" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-lg" role="document">
