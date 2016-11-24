@@ -1,36 +1,84 @@
-#dashboard-head body {
-  background-color: #F7F7F7;
+body {
+  background-color: #F9F9F9;
+    }
+
+#dashboard-head {
+  padding: 20px 40px 20px 40px;
+  border-radius: 2px;
+  margin: 10px 40px 10px 40px;
+  background-color: #FFFFFF;
 }
 
-body h1 {
-  margin-left:60px;
+#dashboard-head h1 {
   color: #384259;
-  font-size: 30px;
+  font-size: 25px;
 }
 
-body > h2 {
-  margin-left:60px;
+#dashboard-head h2 {
+  color: #7AC7C4;
+  font-size: 17px;
+}
+
+
+.dashboard-tabs {
+  background: #FFFFFF;
+  display: flex;
+  margin: 10px 100px 10px 100px;
+  font-weight: bold;
+}
+
+.dashboard-tabs a {
+  color: white;
+}
+.dashboard-tabs a:hover {
+  cursor: pointer;
+  color: #384259;
+  opacity: 0.8;
+}
+
+.dashboard-tabs h3 {
+  font-size: 15px;
+  margin-top: 0;
+  font-family: "Raleway", "Helvetica", "sans-serif";
+  text-align:center;
+}
+.dashboard-tabs p {
+  opacity: 0.5;
+  margin-bottom: 0;
+}
+.dashboard-tab {
+  background: #CCCCCC;
+  flex: 0 0 50%;
+  text-align: center;
+  padding: 20px 0;
+}
+.dashboard-tab:first-child {
+  border-radius: 2px 0 0 0;
+}
+.dashboard-tab:last-child {
+  border-radius: 0 2px 0 0;
+}
+.dashboard-tab.active {
+  background: white;
+  color: black;
+}
+
+.dashboard-tab-content {
+  padding: 20px 40px 20px 40px;
+  border-radius: 2px;
+  margin: 10px 40px 10px 40px;
+  background-color: #FFFFFF;
+
+}
+
+.dashboard-tab-content h1 {
+  color: #384259;
+  font-size: 25px;
+}
+
+.dashboard-tab-content h2 {
   color: #7AC7C4;
   font-size: 20px;
 }
 
-#dashboard-container {
-  display: flex;
-  justify-content: space-around;
-}
 
-#section {
-  margin-left: 15px;
-  font-size: 15px;
-  text-align:center;
-  background-color: #FFFFFF;
-  border: 4px solid #CCCCCC;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 1px;
-}
-
-#section h2 {
-    font-size:20px;
-    color: #384259;
-}
