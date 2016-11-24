@@ -1,0 +1,39 @@
+<% if @current_user.id == @project.user.id %>
+
+<button type="button" data-toggle="modal" data-target="#edit_procès" class="navbar-wagon-button">
+      Modifier le procès
+    </button>
+
+<div class="modal fade" id="edit_procès" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modifier votre procès</h4>
+          </div>
+          <% @project = Project.find(params[:id]) %>
+          <%= simple_form_for @project do |f| %>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.input :name %>
+                  <%= f.input :description %>
+                  <%= f.input :address %>
+                  <%= f.input :city %>
+                  <%= f.input :goal ,label: 'Quel montant souhaitez-vous?'%>
+                </div>
+                <div class="col-md-6">
+                  <%= f.input :category, collection: Project::CATEGORIES, as: :radio_buttons %>
+                  <%= f.input :photo, as: :attachinary %>
+                  <%= f.input :echeance, as: :date, start_year: Date.today.year, end_year: Date.today.year + 100, :order => [:day, :month, :year]%>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+               <%= f.button :submit, "Modifier le procès" , class:'navbar-wagon-button' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
