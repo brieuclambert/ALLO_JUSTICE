@@ -26,6 +26,7 @@ class ProjectsController < ApplicationController
       @percentage = 100
     end
     @contribution = Contribution.new
+    @dates_taken = find_dates_taken
   end
 
   def new
@@ -59,6 +60,15 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:name, :goal, :description, :photo, :address, :city, :category, :echeance)
+  end
+
+  def find_dates_taken
+    all_bookings = []
+    @bookings.each do |booking|
+      range =
+      all_bookings << (booking.start_date..booking.end_date).map{|date| date.strftime("%m/%d/%Y")}
+    end
+    return all_bookings.flatten
   end
 
 end

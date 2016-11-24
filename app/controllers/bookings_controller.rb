@@ -7,12 +7,14 @@ end
 
 def create
   @project = Project.find(params[:project_id])
-  @booking = Booking.new(booking_params)
-  @booking.date = Date.parse(params[:start_date])..Date.parse(params[:end_date])
-  @booking.project_id = params[:project_id]
+  @booking = Booking.new
+  @booking.start_date = Date.strptime(params[:start_date], "%m/%d/%Y")
+  @booking.end_date = Date.strptime(params[:end_date], "%m/%d/%Y")
+  @booking.project = @project
   @booking.user = current_user
   if @booking.save
     redirect_to project_path(@project)
+    flash[:notice] = "Votre booking a bien été pris en compte, vous serez prévenu de la confirmation"
   else
     render :new
   end
@@ -21,7 +23,7 @@ end
 private
 
 def booking_params
-  params.require(:booking).permit(:date)
+  params.require(:booking).permit(:start_date, :end_date)
 end
 
 end
