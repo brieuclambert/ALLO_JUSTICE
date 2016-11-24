@@ -1,39 +1,17 @@
 <div class="navbar-wagon">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-  <%= image_tag "courthouse.png" %>
-  <% end %>
-
-  <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
-
-    <!-- Search form -->
- <!--    <form action="" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-      <button type="submit" class="navbar-wagon-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form> -->
+  <div class="navbar-wagon-left hidden-xs hidden-sm">
     <%= link_to "Tous les procès", projects_path, { :class=>"navbar-wagon-item navbar-wagon-link" } %>
     <%= link_to "Carte des procès", map_path, { :class=>"navbar-wagon-item navbar-wagon-link" } %>
-    <!-- <a href="/projects" class="navbar-wagon-item navbar-wagon-link">Les procès</a> -->
+  </div>
+  <%= cl_image_tag("allo_justice_logo_qrifki.png", :quality=>"auto:best") %>
+  <!-- Right Navigation -->
+  <div class="navbar-wagon-right hidden-xs hidden-sm">
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
-
-    <!-- Notification -->
-    <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-    <div class="badge-container">
-      <i class="fa fa-envelope-o"></i>
-      <div class="badge badge-blue"></div>
-    </div>
-    <% end %>
 
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
       <div class="dropdown">
-
-        <!-- <#%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %#> -->
-
         <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
         <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
 
@@ -68,12 +46,10 @@
     </div>
 
     <% else %>
-
     <!-- Login text link -->
     <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
     <% end %>
-
+    <%= link_to "Aide", map_path, { :class=>"navbar-wagon-item navbar-wagon-link" } %>
     <!-- Button (call-to-action) -->
     <button type="button" data-toggle="modal" data-target="#new_procès" class="navbar-wagon-button">
       Ajouter un procès
@@ -88,42 +64,48 @@
           </div>
           <% @project = Project.new %>
           <%= simple_form_for @project do |f| %>
-            <div class="modal-body">
-              <div class="row">
-                <div class="col-md-6">
-                  <%= f.input :name %>
-                  <%= f.input :description %>
-                  <%= f.input :address %>
-                  <%= f.input :city %>
-                  <%= f.input :goal ,label: 'Quel montant souhaitez-vous?'%>
-                </div>
-                <div class="col-md-6">
-                  <%= f.input :category, collection: Project::CATEGORIES, as: :radio_buttons %>
-                  <%= f.input :photo, as: :attachinary %>
-                  <%= f.input :echeance, as: :date, start_year: Date.today.year, end_year: Date.today.year + 100, :order => [:day, :month, :year]%>
-                </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.input :name %>
+                <%= f.input :description %>
+                <%= f.input :address %>
+                <%= f.input :city %>
+                <%= f.input :goal ,label: 'Quel montant souhaitez-vous?'%>
+              </div>
+              <div class="col-md-6">
+                <%= f.input :category, collection: Project::CATEGORIES, as: :radio_buttons %>
+                <%= f.input :photo, as: :attachinary %>
+                <%= f.input :echeance, as: :date, start_year: Date.today.year, end_year: Date.today.year + 100, :order => [:day, :month, :year]%>
               </div>
             </div>
-            <div class="modal-footer">
-               <%= f.button :submit, "Ajouter un procès" , class:'navbar-wagon-button' %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+          </div>
+          <div class="modal-footer">
+           <%= f.button :submit, "Ajouter un procès" , class:'navbar-wagon-button' %>
+         </div>
+         <% end %>
+       </div>
+     </div>
+   </div>
 
-  </div>
 
-  <!-- Dropdown list appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
-      </ul>
-    </div>
+ </div>
+
+
+ <!-- Dropdown list appearing on mobile only -->
+ <div class="navbar-wagon-item hidden-md hidden-lg">
+  <div class="dropdown">
+    <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+    <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+      <li><%= link_to "Tous les procès", projects_path, { :class=>"navbar-wagon-item navbar-wagon-link" } %></li>
+      <li><%= link_to "Carte des procès", map_path, { :class=>"navbar-wagon-item navbar-wagon-link" } %></li>
+      <% if user_signed_in? %>
+      <li><%= link_to "Profil", dashboard_path, { :class=>"navbar-wagon-item navbar-wagon-link" } %></li>
+      <% else %>
+      <li><%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %></li>
+      <% end %>
+    </ul>
   </div>
+</div>
 </div>
 
