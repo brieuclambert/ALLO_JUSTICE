@@ -3,6 +3,8 @@ class Booking < ApplicationRecord
   belongs_to :project
   validates :user, presence: true
   validates :project, presence: true
-  validates :date, presence: true
-  validates_uniqueness_of :date, :scope => [:project]
+  validates :start_date, presence: true
+  # validates_uniqueness_of :start_date, :scope => [:project]
+  validates :end_date, presence: true
+  # validates_uniqueness_of :end_date, :scope => [:project]
 end

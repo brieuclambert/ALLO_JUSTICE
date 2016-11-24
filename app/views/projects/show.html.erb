@@ -8,7 +8,7 @@
 
     <div class="row">
       <!-- Photo + Progress bar + Amount -->
-        <!-- Photo + User name -->
+      <!-- Photo + User name -->
       <div class="col-xs-3">
         <div style="width: 100%; height: 150px;background-image: url('<% if @project.photo? %><%= cl_image_path(@project.photo.path,  :width => 300,  :crop => :limit)%> <% end %>')">
         </div>
@@ -16,7 +16,7 @@
           <p>Par <%= @project.user.first_name %> <%= @project.user.last_name %></p>
         </div>
       </div>
-        <!-- Progress bar -->
+      <!-- Progress bar -->
       <div class="col-xs-6">
         <h2><%= @sum %> € sur <%= @project.goal %>€</h2>
         <div class="progress">
@@ -57,7 +57,7 @@
     <div class="tab-content" id="general">
       <div class="row">
         <div class="col-xs-12 content">
-        <!-- Description -->
+          <!-- Description -->
           <div class="col-xs-12 col-sm-8">
             <h3>Description</h3>
             <p><%= @project.description %></p>
@@ -65,9 +65,9 @@
           <div class="col-xs-12 col-sm-4 contribution-show">
             <h3 style="width:100%">Les contributions</h3>
             <% @contributions.each do |contribution| %>
-              <div class="contribution-show-card">
-                <h4><i class="fa fa-money" aria-hidden="true" style="margin-right:5px; color:#F73859"></i> <%= contribution.amount%> €</h4>
-              </div>
+            <div class="contribution-show-card">
+              <h4><i class="fa fa-money" aria-hidden="true" style="margin-right:5px; color:#F73859"></i> <%= contribution.amount%> €</h4>
+            </div>
             <% end %>
           </div>
         </div>
@@ -89,21 +89,27 @@
       <div class="row">
         <div class="col-xs-12 content">
           <div class="col-xs-6">
-            <h3> Check avaibility</h3>
-            <ul>
-              <% @bookings.each do |booking| %>
-              <li> : <%= booking.date %> </li>
-              <% end %>
-            </ul>
-          </div>
-          <div class="col-xs-6">
             <%= simple_form_for [@project, @booking] do |f| %>
-              <div class="input-group input-daterange" style="width: 300px">
-                <%= f.input :start_date, as: :fake, input_html: { class: "form-control datepicker"} %>
-                <%= f.input :end_date, as: :fake, input_html: { class: "form-control datepicker"} %>
-              </div>
-              <br>
-              <%= f.submit class: "btn btn-primary" %>
+            <div class="input-group input-daterange" style="width: 300px">
+              <%= f.input :start_date, as: :fake, input_html: { class: "form-control datepicker"} %>
+              <%= f.input :end_date, as: :fake, input_html: { class: "form-control datepicker"} %>
+            </div>
+            <br>
+            <%= f.submit class: "btn btn-primary" %>
+            <% end %>
+
+            <%= content_for :after_js do %>
+            <script>
+
+              $(document).ready(function() {
+                $('.input-daterange').datepicker({
+                  language: "fr",
+                  todayHighlight: true,
+                  datesDisabled: <%= raw @dates_taken.to_json %>
+                });
+              });
+
+            </script>
             <% end %>
           </div>
         </div>
@@ -114,9 +120,9 @@
 </div>
 
 <% content_for(:after_js) do %>
-  <script>
-    $(document).ready(function() {
-      $(".tab").on("click", function(e){
+<script>
+  $(document).ready(function() {
+    $(".tab").on("click", function(e){
         // Change active tab
         $(".tab").removeClass("active");
         $(this).addClass("active");
@@ -139,6 +145,6 @@
           });
         }
       });
-    });
-  </script>
+  });
+</script>
 <% end %>
