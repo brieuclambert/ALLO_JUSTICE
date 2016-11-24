@@ -1,0 +1,76 @@
+.wrapper {
+  background-color: #F9F9F9
+}
+
+.title {
+  background: #FFFFFF;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.50);
+  font-size: 16px;
+  color: #384259;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align:center;
+  padding:5px;
+}
+
+.tabs {
+  background: white;
+  display: flex;
+  padding: 0px;
+  margin:5px;
+  border: 1px solid #F73859;
+}
+
+.tabs a {
+color: #525252;
+}
+
+.tabs a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
+  background: #F5F5F5;
+}
+.tabs h3 {
+  font-size: 17px;
+  margin: 0;
+}
+.tab {
+  background: white;
+  flex: 0 0 25%;
+  text-align: center;
+  padding: 5px 0 5px 0;
+  opacity: 0.6;
+}
+
+.tab.active {
+  background: #F9F9F9;
+  color: #525252;
+  font-weight: bolder;
+  opacity: 1;
+}
+
+.content {
+  margin-top: 20px;
+  border: 1px solid #F73859;
+  margin-left:20px;
+  margin-right:50px;
+  color: #384259;
+  padding:10px;
+}
+
+.contribution-show {
+  display:flex;
+  flex-wrap:wrap;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contribution-show-card {
+  flex: 0 0 48%;
+  background-color: white;
+  padding:5px;
+  margin-bottom: 5px;
+  box-shadow: 0 1px 2px 0 rgba(190,190,190,0.50);
+}
