@@ -12,6 +12,7 @@ def create
   @booking.end_date = Date.strptime(params[:end_date], "%m/%d/%Y")
   @booking.project = @project
   @booking.user = current_user
+  @booking.status = "Pending"
   if @booking.save
     redirect_to project_path(@project)
     flash[:notice] = "Votre booking a bien été pris en compte, vous serez prévenu de la confirmation"
