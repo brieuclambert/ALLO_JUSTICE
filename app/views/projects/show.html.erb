@@ -15,108 +15,145 @@
         <div style="margin-top:10px">
           <p>Par <%= @project.user.first_name %> <%= @project.user.last_name %></p>
         </div>
-      </div>
-      <!-- Progress bar -->
-      <div class="col-xs-6">
-        <h2><%= @sum %> € sur <%= @project.goal %>€</h2>
+        <button type="button" data-toggle="modal" data-target="#edit_procès" class="navbar-wagon-button">
+          Modifier le procès
+        </button>
+
+        <div class="modal fade" id="edit_procès" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modifier votre procès</h4>
+              </div>
+              <% @project = Project.find(params[:id]) %>
+              <%= simple_form_for @project do |f| %>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.input :name %>
+                    <%= f.input :description %>
+                    <%= f.input :address %>
+                    <%= f.input :city %>
+                    <%= f.input :goal ,label: 'Quel montant souhaitez-vous?'%>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.input :category, collection: Project::CATEGORIES, as: :radio_buttons %>
+                    <%= f.input :photo, as: :attachinary %>
+                    <%= f.input :echeance, as: :date, start_year: Date.today.year, end_year: Date.today.year + 100, :order => [:day, :month, :year]%>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+               <%= f.button :submit, "Modifier le procès" , class:'navbar-wagon-button' %>
+             </div>
+             <% end %>
+           </div>
+         </div>
+       </div>
+
+     </div>
+     <!-- Progress bar -->
+     <div class="col-xs-6">
+      <h2><%= @sum %> € sur <%= @project.goal %>€</h2>
+      <div class="progress">
         <div class="progress">
-          <div class="progress">
-            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <%= @percentage%>%;">
-              <%= @percentage%>%
-            </div>
-          </div>
-        </div>
-        <p> <%= @elapsed_day %> jours restants </p>
-      </div>
-      <!-- Progress bar -->
-      <div class="col-xs-12 col-sm-3" style="padding:20px">
-        <%= simple_form_for [@project, @contribution] do |f| %>
-        <%= f.input :amount %>
-        <%= f.submit "Participez", class: "btn btn-primary" %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="row">
-      <!-- Navbar internal -->
-      <div class="col-xs-9">
-        <div class="tabs">
-          <a class="tab active" data-target="#general">
-            <h3>Général</h3>
-          </a>
-          <a class="tab " data-target="#carte">
-            <h3>Carte</h3>
-          </a>
-          <a class="tab" data-target="#booking">
-            <h3">Rencontrez l'avocat</h3>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="tab-content" id="general">
-      <div class="row">
-        <div class="col-xs-12 content">
-          <!-- Description -->
-          <div class="col-xs-12 col-sm-8">
-            <h3>Description</h3>
-            <p><%= @project.description %></p>
-          </div>
-          <div class="col-xs-12 col-sm-4 contribution-show">
-            <h3 style="width:100%">Les contributions</h3>
-            <% @contributions.each do |contribution| %>
-            <div class="contribution-show-card">
-              <h4><i class="fa fa-money" aria-hidden="true" style="margin-right:5px; color:#F73859"></i> <%= contribution.amount%> €</h4>
-            </div>
-            <% end %>
+          <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <%= @percentage%>%;">
+            <%= @percentage%>%
           </div>
         </div>
       </div>
+      <p> <%= @elapsed_day %> jours restants </p>
     </div>
-
-
-
-    <div class="tab-content hidden" id="carte">
-      <div class="row">
-        <div class="col-xs-12 content">
-          <h4 style="text-align:center"><%= @project.address %></h4>
-          <div id="map" style="height: 200px; width: 100%;"></div>
-        </div>
-      </div>
+    <!-- Progress bar -->
+    <div class="col-xs-12 col-sm-3" style="padding:20px">
+      <%= simple_form_for [@project, @contribution] do |f| %>
+      <%= f.input :amount %>
+      <%= f.submit "Participez", class: "btn btn-primary" %>
+      <% end %>
     </div>
-
-    <div class="tab-content hidden" id="booking">
-      <div class="row">
-        <div class="col-xs-12 content">
-          <div class="col-xs-6">
-            <%= simple_form_for [@project, @booking] do |f| %>
-            <div class="input-group input-daterange" style="width: 300px">
-              <%= f.input :start_date, as: :fake, input_html: { class: "form-control datepicker"} %>
-              <%= f.input :end_date, as: :fake, input_html: { class: "form-control datepicker"} %>
-            </div>
-            <br>
-            <%= f.submit class: "btn btn-primary" %>
-            <% end %>
-
-            <%= content_for :after_js do %>
-            <script>
-
-              $(document).ready(function() {
-                $('.input-daterange').datepicker({
-                  language: "fr",
-                  todayHighlight: true,
-                  datesDisabled: <%= raw @dates_taken.to_json %>
-                });
-              });
-
-            </script>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div>
+
+  <div class="row">
+    <!-- Navbar internal -->
+    <div class="col-xs-9">
+      <div class="tabs">
+        <a class="tab active" data-target="#general">
+          <h3>Général</h3>
+        </a>
+        <a class="tab " data-target="#carte">
+          <h3>Carte</h3>
+        </a>
+        <a class="tab" data-target="#booking">
+          <h3">Rencontrez l'avocat</h3>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="general">
+    <div class="row">
+      <div class="col-xs-12 content">
+        <!-- Description -->
+        <div class="col-xs-12 col-sm-8">
+          <h3>Description</h3>
+          <p><%= @project.description %></p>
+        </div>
+        <div class="col-xs-12 col-sm-4 contribution-show">
+          <h3 style="width:100%">Les contributions</h3>
+          <% @contributions.each do |contribution| %>
+          <div class="contribution-show-card">
+            <h4><i class="fa fa-money" aria-hidden="true" style="margin-right:5px; color:#F73859"></i> <%= contribution.amount%> €</h4>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="tab-content hidden" id="carte">
+    <div class="row">
+      <div class="col-xs-12 content">
+        <h4 style="text-align:center"><%= @project.address %></h4>
+        <div id="map" style="height: 200px; width: 100%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content hidden" id="booking">
+    <div class="row">
+      <div class="col-xs-12 content">
+        <div class="col-xs-6">
+          <%= simple_form_for [@project, @booking] do |f| %>
+          <div class="input-group input-daterange" style="width: 300px">
+            <%= f.input :start_date, as: :fake, input_html: { class: "form-control datepicker"} %>
+            <%= f.input :end_date, as: :fake, input_html: { class: "form-control datepicker"} %>
+          </div>
+          <br>
+          <%= f.submit class: "btn btn-primary" %>
+          <% end %>
+
+          <%= content_for :after_js do %>
+          <script>
+
+            $(document).ready(function() {
+              $('.input-daterange').datepicker({
+                language: "fr",
+                todayHighlight: true,
+                datesDisabled: <%= raw @dates_taken.to_json %>
+              });
+            });
+
+          </script>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
 </div>
 
 <% content_for(:after_js) do %>
