@@ -48,9 +48,9 @@
             <!-- barre de progression -->
             <div class="row">
               <div class="col-sm-10 col-sm-offset-1">
-                <% @contributions = Contribution.select{ |contribution| contribution.project_id == project.id.to_i}
+                <% @project_contributions = Contribution.select{ |contribution| contribution.project_id == project.id.to_i}
                 @sum = 0
-                @contributions.each do |contribution|
+                @project_contributions.each do |contribution|
                   @sum += contribution.amount
                   end %>
                   <div class="progress">
@@ -63,7 +63,7 @@
               <div class="row">
                 <!-- backers -->
                 <div class="col-sm-3  col-sm-offset-1">
-                  <p><%= @contributions.length %> backers</p>
+                  <p><%= @project_contributions.length %> backers</p>
                 </div>
                 <!-- goal -->
                 <div class="col-sm-4 middle">
@@ -88,7 +88,7 @@
       <div class="col-sx-12">
         <h2>Vos contributions </h2>
         <% @contributions.each do |contribution| %>
-        <%= contribution.amount %> € pour <%= link_to contribution.project.name, project_path(contribution.project) %>
+        <p><%= contribution.amount %> € pour <%= link_to contribution.project.name, project_path(contribution.project) %></p>
         <% end %>
       </div>
     </div>
