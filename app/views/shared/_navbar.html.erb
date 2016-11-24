@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "courthouse.png" %>
+  <%= image_tag "courthouse.png" %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -20,62 +20,98 @@
     <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-      <!-- Notification -->
-      <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
-        <div class="badge-container">
-          <i class="fa fa-envelope-o"></i>
-          <div class="badge badge-blue"></div>
-        </div>
-      <% end %>
+    <!-- Notification -->
+    <%= link_to "#", class: "navbar-wagon-item navbar-wagon-link" do %>
+    <div class="badge-container">
+      <i class="fa fa-envelope-o"></i>
+      <div class="badge badge-blue"></div>
+    </div>
+    <% end %>
 
-      <!-- Profile picture and dropdown -->
-      <div class="navbar-wagon-item">
-        <div class="dropdown">
+    <!-- Profile picture and dropdown -->
+    <div class="navbar-wagon-item">
+      <div class="dropdown">
 
-          <!-- <#%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %#> -->
+        <!-- <#%= image_tag "http://placehold.it/30x30", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %#> -->
 
-          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+        <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
 
-          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "/" do %>
-                <i class="fa fa-home"></i>  <%= t(".profile", default: "Accueil") %>
-              <% end %>
-            <li>
-              <%= link_to "/dashboard" do %>
-                <i class="fa fa-folder-open"></i> <%= t(".profile", default: "Mes procès") %>
-              <% end %>
-            </li>
+        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li>
+            <%= link_to "/" do %>
+            <i class="fa fa-home"></i>  <%= t(".profile", default: "Accueil") %>
+            <% end %>
             <li>
               <%= link_to "/dashboard" do %>
-                <i class="fa fa-usd"></i> <%= t(".profile", default: "Mes contributions") %>
+              <i class="fa fa-folder-open"></i> <%= t(".profile", default: "Mes procès") %>
               <% end %>
-            </li>
             </li>
             <li>
               <%= link_to "/dashboard" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Mon profil") %>
+              <i class="fa fa-usd"></i> <%= t(".profile", default: "Mes contributions") %>
               <% end %>
             </li>
-            <li>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-              <% end %>
-            </li>
-          </ul>
-        </div>
+          </li>
+          <li>
+            <%= link_to "/dashboard" do %>
+            <i class="fa fa-user"></i> <%= t(".profile", default: "Mon profil") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+            <% end %>
+          </li>
+        </ul>
       </div>
+    </div>
 
     <% else %>
 
-      <!-- Login text link -->
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <!-- Login text link -->
+    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
     <% end %>
 
     <!-- Button (call-to-action) -->
-    <%= link_to "Ajouter un procès", new_project_path, { :class=>"navbar-wagon-item navbar-wagon-button btn" } %>
+    <button type="button" data-toggle="modal" data-target="#new_procès" class="navbar-wagon-button">
+      Ajouter un procès
+    </button>
+
+    <div class="modal fade" id="new_procès" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Ajouter un procès</h4>
+          </div>
+          <% @project = Project.new %>
+          <%= simple_form_for @project do |f| %>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <%= f.input :name %>
+                  <%= f.input :description %>
+                  <%= f.input :address %>
+                  <%= f.input :city %>
+                  <%= f.input :goal ,label: 'Quel montant souhaitez-vous?'%>
+                </div>
+                <div class="col-md-6">
+                  <%= f.input :category, collection: Project::CATEGORIES, as: :radio_buttons %>
+                  <%= f.input :photo, as: :attachinary %>
+                  <%= f.input :echeance, as: :date, start_year: Date.today.year, end_year: Date.today.year + 100, :order => [:day, :month, :year]%>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+               <%= f.button :submit, "Ajouter un procès" , class:'navbar-wagon-button' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
