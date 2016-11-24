@@ -1,19 +1,21 @@
 .banner {
   color: white;
   text-align: center;
-  height: 100vh;
-  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  height: calc(100vh - 70px);
   background-size: cover !important;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'Montserrat', sans-serif;
+  margin-bottom: 70px;
 }
 .banner h1 {
   font-size: 50px;
-  font-weight: bold;
-  color: #7AC7C4;
+  font-weight: 200;
+  color: #FFFFFF;
+  justify: left;
 }
+
 .banner h3 {
   font-size: 20px;
   font-weight: lighter;
@@ -21,19 +23,28 @@
   margin-bottom: 20px;
 }
 
-.btn {
-  color: #2C3E50;
-  background-color: #CCCCCC;
-  border-color: #CCCCCC
+.btn-home {
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: 100;
 }
 
+.btn-home:hover {
+  opacity: 0.6;
+  text-decoration: none;
+  color: white;
+}
 
 .cardhome{
   margin-top: 10px;
   background-size: cover !important;
   background-color: white ;
   position: relative;
-
+  margin-bottom: 70px;
+  border-radius: 5px;
 }
 
 .cardhome-number {
@@ -42,58 +53,49 @@
   text-align: center;
   font-weight: bold;
   border-radius: 5px;
-  // border-radius: 5px 0 0 5px;
   margin-top: 10px;
   margin-bottom: 10px;
   background-color: blue;
-
 }
+
 .cardhome-number p {
   position: absolute;
   top: 30px;
   left:20px;
   font-size: 30px;
-
 }
 
 .cardhome-head {
-  // position: absolute;
   font-size: 20px;
   padding: 10px;
   color: #384259;
-  font-weight: bold;
-  // border-radius: 5px;
-
-
+  font-weight: 100;
+  // border-bottom: 1px solid #384259;
   margin-top: 10px;
-  margin-bottom: 10px;
-  border-bottom: 4px;
-  border-color: red;
-  // border-radius: 0 5px 5px 0;
-  border-radius: 5px;
-  // background-color: blue;
+  border-bottom: 1px solid #384259;
+  // border-radius: 5px;
   margin-right: 15px;
-  // position: absolute;
-  // position: top;
-  // text-transform: uppercase;
+  height: 28vh;
+}
 
-  // left: 5px;
-  // top: 5px;
+.cardhome-head p {
+  padding-bottom: 10px;
+  // border-bottom: 1px solid #384259;
 }
 
 .cardhome-content {
-  // position: absolute;
   background-color: #384259;
-  // position: absolute;
-  font-size: 17px;
+  font-size: 15px;
+  font-weight: 100;
   color: white;
   padding: 10px;
   text-align: center;
   border-radius: 5px;
-  // margin-bottom: 15px;
-  margin: 15px;
-  // position: bottom;
-
+  margin: 12px 15px 15px 15px;
+  height: 26vh;
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
 }
 
 
