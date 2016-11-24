@@ -8,6 +8,7 @@ class PagesController < ApplicationController
     @user = current_user
     @contributions = Contribution.select{ |contribution| contribution.user_id == current_user.id}
     @projects = Project.select{ |project| project.user_id == current_user.id}
+    @my_bookings = Booking.select{ |booking| booking.user_id == current_user.id}
   end
 
   def map
