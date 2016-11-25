@@ -3,8 +3,9 @@
     <%= link_to "Tous les procès", projects_path, { :class=>"navbar-wagon-item navbar-wagon-link" } %>
     <%= link_to "Carte des procès", map_path, { :class=>"navbar-wagon-item navbar-wagon-link" } %>
   </div>
-
+<%= link_to "/" do %>
   <svg width="195px" height="49px" viewBox="0 0 195 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
     <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
     <title>Untitled</title>
     <desc>Created with Sketch.</desc>
@@ -17,6 +18,7 @@
         </text>
     </g>
 </svg>
+<% end %>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <!-- Different navigation if login or not -->
