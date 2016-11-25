@@ -89,47 +89,60 @@
     </div>
 
     <div class="dashboard-tab-content hidden" id="mescontribut">
-      <div class="col-xs-12 row">
-        <h2>Vos contributions </h2>
+      <div class="col-xs-12">
+      <h2>Vos contributions </h2>
+      <div class="dashboard-contribution-show"></div>
         <% @contributions.each do |contribution| %>
-        <p><%= contribution.amount %> € pour <%= link_to contribution.project.name, project_path(contribution.project) %></p>
+          <div class="dashboard-contribution-show-card">
+            <h3><%= link_to contribution.project.name, project_path(contribution.project) %></h3>
+            <h4><i class="fa fa-money" aria-hidden="true" style="margin-right:5px; color:#F73859"></i> <%= contribution.amount %> €</h4>
+          </div>
         <% end %>
+        </div>
       </div>
-    </div>
 
-    <div class="dashboard-tab-content row hidden" id="mesrdv">
+    <div class="dashboard-tab-content row hidden" id="mesrdv" style="background:#F9F9F9; font-family:'Raleway', sans-serif">
 
-      <div class="col-xs-12 row">
+      <div class="col-xs-12">
         <div class="col-xs-6">
           <h2> Vos rendez-vous avec un avocat </h2>
            <% @my_bookings.each do |booking| %>
-          <p> Du <%= booking.start_date %> au <%= booking.end_date %> <br>
+           <div class="dashboard-contribution-show-card" style="margin:20px">
+          <p> Du <%= booking.start_date.strftime('%a %e %b %Y') %> au <%= booking.end_date.strftime('%a %e %b %Y')  %> <br>
           <%= link_to booking.project.name, project_path(booking.project) %> <br>
           Statut : <%= booking.status %> </p>
+          </div>
           <% end %>
         </div>
 
         <div class="col-xs-6">
-          <h2> Vos rendez-vous avec vos contributeurs </h2>
+          <h2> Les rendez-vous avec l'avocat de vos procès </h2>
           <p>  <% @projects.each do |project| %>
-                  <h3> <%= project.name %> </h3>
+                <div class="dashboard-contribution-show-card" style="margin:20px">
+                  <h3> <%= link_to project.name, project_path(project) %></h3>
                   <% @project_bookings = Booking.select{ |booking| booking.project_id == project.id }  %>
                   <% @project_bookings.each do |project_booking| %>
-                   <p> <%= project_booking.user.first_name %> <br> Du <%= project_booking.start_date %> au <%= project_booking.end_date %> <br>
+                   <p> Avec : <%= project_booking.user.first_name %> <%= project_booking.user.last_name %>
+                   <br> Du <%= project_booking.start_date.strftime('%a %e %b %Y') %> au <%= project_booking.end_date.strftime('%a %e %b %Y') %> <br>
                   Statut : <%= project_booking.status %>
                   <br> <% if project_booking.status == "Pending" %>
                   <%= link_to "Accept", validate_project_booking_path(project, project_booking),
                   controller: :bookings, method: :validate, class: "btn btn-success" %>
                    <%= link_to "Declined", decline_project_booking_path(project, project_booking),
                   controller: :bookings, method: :decline, class: "btn btn-danger" %>
+
                    </p>
                   <% end %>
+                  <br> ****
                   <% end %>
-
+                </div>
               <% end %>
            </p>
         </div>
       </div>
     </div>
   </div></div></div></div></div>
+
+
+
 
