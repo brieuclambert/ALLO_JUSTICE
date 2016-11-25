@@ -1,19 +1,24 @@
 <% @title = "Nouveau projet" %>
 <div class="container">
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <h1>Ajouter un nouveau procès! gagnez plein d'argent!</h1>
+  <h1>Votre nouveau procès</h1>
+    <div class="col-md-6">
       <%= simple_form_for @project do |f| %>
         <%= f.input :name %>
         <%= f.input :description %>
         <%= f.input :address %>
         <%= f.input :city %>
+        </div>
+        <div class="col-md-6">
         <%= f.input :category, collection: Project::CATEGORIES %>
         <%= f.input :goal ,label: 'Quel montant souhaitez-vous?'%>
+
+
         <%= f.input :photo, as: :attachinary %>
         <%= f.input :echeance, as: :date, start_year: Date.today.year, end_year: Date.today.year + 100, :order => [:day, :month, :year]%>
         <%= f.button :submit, class: 'btn btn-primary'%>
       <% end %>
+    </div>
     </div>
   </div>
 </div>
