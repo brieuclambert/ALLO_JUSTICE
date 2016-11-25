@@ -1,6 +1,8 @@
 class Project < ApplicationRecord
   CATEGORIES = ["Droit bancaire", "Droit du travail", "Droit fiscal", "Droit de la santé", "Droit de succession"]
   belongs_to :user
+  has_many :bookings
+  has_many :contributions
   has_attachment :photo
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true, uniqueness: true

@@ -5,8 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
   after_create :send_welcome_email
-  has_many :contributions
   has_many :projects
+  has_many :bookings, through: :projects
+    has_many :contributions, through: :projects
+
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)
