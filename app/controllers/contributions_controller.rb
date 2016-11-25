@@ -10,12 +10,25 @@ class ContributionsController < ApplicationController
     @contribution = Contribution.new(contribution_params)
     @contribution.project_id = params[:project_id]
     @contribution.user_id = current_user.id
+    # if @contribution.save
+    #   redirect_to project_path(@project)
+    # else
+    #   render :new
+    # end
+
     if @contribution.save
-      redirect_to project_path(@project)
+      respond_to do |format|
+        format.html { redirect_to project_path(@project) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'projects/show' }
+        format.js  # <-- idem
+      end
+    end
+
   end
-end
 
 private
 def contribution_params

@@ -21,6 +21,7 @@ module ALLOJustice
   class Application < Rails::Application
     config.generators do |generate|
       generate.assets false
+    config.action_view.embed_authenticity_token_in_remote_forms = true
     end
 
     # Settings in config/environments/* take precedence over those specified here.
