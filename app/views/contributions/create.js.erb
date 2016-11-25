@@ -1,0 +1,14 @@
+// app/views/contributions/create.js.erb
+// Here you will write *javascript* that would be executed by the browser
+
+<% if @contribution.errors.any? %>
+  // TODO render the form with errors
+<% else %>
+  var new_contribution = $('<%= j render "contributions/contribution", contribution: @contribution %>').hide();
+  // Add it to the DOM, at the end of the existing contributions. It's still hidden.
+  $('#contributions').append(new_contribution);
+  // Show the new contribution with an animation!
+  new_contribution.slideDown();
+  // reset the form
+  $('#contribution_amount').val('');
+<% end %>
