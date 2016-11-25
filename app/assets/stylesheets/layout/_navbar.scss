@@ -1,4 +1,5 @@
 /* Main class */
+// <%= cl_image_tag("allo_justice_logo_qrifki.png", :quality=>"auto:best", id: "logo") %>
 .navbar-wagon {
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
@@ -19,14 +20,21 @@
 .navbar-wagon-right {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
+  flex: 0 0 35%;
+  padding-right: 15px;
   // margin: 0 30px;
 }
 
 .navbar-wagon-left{
   display:flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex: 0 0 35%;
+}
+
+#logo {
+  flex: 0 0 20%;
 }
 
 /* Navbar item */
@@ -35,6 +43,7 @@
   cursor: pointer;
   padding: 0 20px;
   color: #384259;
+  text-align: center;
 }
 
 /* Navbar standard link */
@@ -52,18 +61,18 @@
 /* Navbar right button */
 .navbar-wagon-button {
   margin-left: 10px;
-  padding: 0 20px;
+  padding: 5px 20px;
   border-radius: 20em;
-  line-height: 40px;
-  background-color: #384259 !important;
-  color: white !important;
+  // line-height: 40px;
+  background-color: #384259 ;
+  color: white ;
   font-size: 20px;
-  border: 2px solid #384259 !important;
+  border: 2px solid #384259;
 }
 .navbar-wagon-button:hover {
   color: #384259;
-  background: #7AC7C4;
-  border-color: #7AC7C4;
+  background: white;
+  border-color: #384259;
 }
 
 /* Navbar dropdown menu */

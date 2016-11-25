@@ -3,7 +3,20 @@
     <%= link_to "Tous les procès", projects_path, { :class=>"navbar-wagon-item navbar-wagon-link" } %>
     <%= link_to "Carte des procès", map_path, { :class=>"navbar-wagon-item navbar-wagon-link" } %>
   </div>
-  <%= cl_image_tag("allo_justice_logo_qrifki.png", :quality=>"auto:best") %>
+
+  <svg width="195px" height="49px" viewBox="0 0 195 49" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41 (35326) - http://www.bohemiancoding.com/sketch -->
+    <title>Untitled</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="36" font-family="AvenirNext-Regular, Avenir Next" opacity="0.802083333" font-weight="normal">
+        <text id="Titre">
+            <tspan x="3.738" y="36" fill="#7AC7C4">Allo</tspan>
+            <tspan x="69.078" y="36" fill="#000000"> </tspan>
+            <tspan x="77.646" y="36" fill="#384259">Justice</tspan>
+        </text>
+    </g>
+</svg>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
     <!-- Different navigation if login or not -->
@@ -44,12 +57,12 @@
         </ul>
       </div>
     </div>
-<button type="button" data-toggle="modal" data-target="#new_procès" class="navbar-wagon-button">
+    <button type="button" data-toggle="modal" data-target="#new_procès" class="navbar-wagon-button">
       Ajouter un procès
     </button>
     <% else %>
     <!-- Login text link -->
-    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+    <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-button navbar-wagon-link" %>
     <% end %>
 
     <!-- Button (call-to-action) -->
