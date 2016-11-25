@@ -37,12 +37,12 @@ body {
 }
 
 .dashboard-tabs a {
-  color: white;
+  color: black;
 }
 .dashboard-tabs a:hover {
   cursor: pointer;
   color: #7AC7C4;
-  background: white;
+  background: #384259;
 }
 
 .dashboard-tabs h3 {
@@ -56,7 +56,7 @@ body {
   margin-bottom: 0;
 }
 .dashboard-tab {
-  background: #384259;
+  background: white;
   flex: 0 0 33%;
   text-align: center;
   padding: 20px 0;
@@ -68,8 +68,8 @@ body {
   border-radius: 0 2px 0 0;
 }
 .dashboard-tab.active {
-  background: white;
-  color: black;
+  background: #384259;
+  color: white;
 }
 
 .dashboard-tab-content {
