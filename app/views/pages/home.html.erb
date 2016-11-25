@@ -27,106 +27,133 @@
             <div class="col-md-12">
               <div class="cardhome-content">
                 <p>- Droit bancaire
-                <br>
-                - Droit de la consommation
-                <br>
-                - Droit du travail
-                <br>
-                - Découvrez les litiges éligibles</p>
+                  <br>
+                  - Droit de la consommation
+                  <br>
+                  - Droit du travail
+                  <br>
+                  - Découvrez les litiges éligibles</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-md-3">
-        <div class="cardhome">
-          <div class="row">
-            <div class="col-md-2">
-              <div class="cardhome-number">
-                <p>2</p>
+        <div class="col-md-3">
+          <div class="cardhome">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="cardhome-number">
+                  <p>2</p>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="cardhome-head">
+                  <p>La communauté finance mes frais de justice</p>
+                </div>
               </div>
             </div>
-            <div class="col-md-10">
-              <div class="cardhome-head">
-                <p>La communauté finance mes frais de justice</p>
-              </div>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col-md-12">
-              <div class="cardhome-content">
-                <p>Après examen du litige, je peux commencer à collecter des fonds pour la totalité ou une partie des frais</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <div class="cardhome">
-          <div class="row">
-            <div class="col-md-2">
-              <div class="cardhome-number">
-                <p>3</p>
-              </div>
-            </div>
-            <div class="col-md-10">
-              <div class="cardhome-head">
-                <p>Le litige se termine par médiation ou par jugement</p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="cardhome-content">
-                <p>- J’informe la communauté des différentes étapes de la précédure
-                <br>
-                - A chaque échéance, le montant levé sera transféré à l’avocat</p>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="cardhome-content">
+                  <p>Après examen du litige, je peux commencer à collecter des fonds pour la totalité ou une partie des frais</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="col-md-3">
-        <div class="cardhome">
-          <div class="row">
-            <div class="col-md-2">
-              <div class="cardhome-number">
-                <p>4</p>
+        <div class="col-md-3">
+          <div class="cardhome">
+            <div class="row">
+              <div class="col-md-2">
+                <div class="cardhome-number">
+                  <p>3</p>
+                </div>
+              </div>
+              <div class="col-md-10">
+                <div class="cardhome-head">
+                  <p>Le litige se termine par médiation ou par jugement</p>
+                </div>
               </div>
             </div>
-            <div class="col-md-10">
-              <div class="cardhome-head">
-                <p>Les investisseurs sont rémunérés avec une partie des dommages et intérêts </p>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="cardhome-content">
+                  <p>- J’informe la communauté des différentes étapes de la précédure
+                    <br>
+                    - A chaque échéance, le montant levé sera transféré à l’avocat</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="cardhome-content">
-                <p>A la fin de la procédure, je rémunère les investisseurs d’un pourcentage des dommages reçus</p>
+
+          <div class="col-md-3">
+            <div class="cardhome">
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="cardhome-number">
+                    <p>4</p>
+                  </div>
+                </div>
+                <div class="col-md-10">
+                  <div class="cardhome-head">
+                    <p>Les investisseurs sont rémunérés avec une partie des dommages et intérêts </p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="cardhome-content">
+                    <p>A la fin de la procédure, je rémunère les investisseurs d’un pourcentage des dommages reçus</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
     </div>
-  </div>
+    <div class="wrapper">
+      <div class="container">
+        <div class="row">
+          <div class="">
+            <h1>Voici des campagnes en cours</h1>
+            <br>
+          </div>
+          <div class="col-md-6">
+            <%= link_to "/projects" do %>
+            <div class="new-name" style="background-image:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url('<%= image_path("licenciement.png") %>');">
+              <br>
+            </div>
+            <% end %>
+          </div>
+          <div class="col-md-6">
+            <%= link_to "/projects" do %>
+            <div class="new-name" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),url('<%= image_path('abus.png') %>');">
+              <br>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
