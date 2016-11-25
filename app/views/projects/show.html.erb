@@ -15,9 +15,7 @@
         <div style="margin-top:10px">
           <p>Par <%= @project.user.first_name %> <%= @project.user.last_name %></p>
         </div>
-        <button type="button" data-toggle="modal" data-target="#edit_procès" class="navbar-wagon-button">
-          Modifier le procès
-        </button>
+
 
         <div class="modal fade" id="edit_procès" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog modal-lg" role="document">
@@ -85,9 +83,14 @@
           <h3>Carte</h3>
         </a>
         <a class="tab" data-target="#booking">
-          <h3">Rencontrez l'avocat</h3>
+          <h3>Rencontrez l'avocat</h3>
         </a>
       </div>
+    </div>
+    <div class="col-xs-3">
+        <button type="button" data-toggle="modal" data-target="#edit_procès" class="navbar-wagon-button">
+          Modifier le procès
+        </button>
     </div>
   </div>
 
