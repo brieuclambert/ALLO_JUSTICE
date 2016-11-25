@@ -115,7 +115,14 @@
                   <% @project_bookings = Booking.select{ |booking| booking.project_id == project.id }  %>
                   <% @project_bookings.each do |project_booking| %>
                    <p> <%= project_booking.user.first_name %> <br> Du <%= project_booking.start_date %> au <%= project_booking.end_date %> <br>
-                   Statut : <%= project_booking.status %> </p>
+                  Statut : <%= project_booking.status %>
+                  <br> <% if project_booking.status == "Pending" %>
+                  <%= link_to "Accept", validate_project_booking_path(project, project_booking),
+                  controller: :bookings, method: :validate, class: "btn btn-success" %>
+                   <%= link_to "Declined", decline_project_booking_path(project, project_booking),
+                  controller: :bookings, method: :decline, class: "btn btn-danger" %>
+                   </p>
+                  <% end %>
                   <% end %>
 
               <% end %>
